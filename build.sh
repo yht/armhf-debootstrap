@@ -21,6 +21,8 @@ function build_debootstrap {
 
   sudo chown -R $USER:$USER *
 
+  sudo rm -rf rootfs/dev/*
+  sudo rm -rf rootfs/run/*
   sudo tar -zcf rootfs.tar.gz rootfs
 }
 
