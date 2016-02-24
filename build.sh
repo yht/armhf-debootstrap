@@ -19,10 +19,10 @@ function build_debootstrap {
   sudo mkdir rootfs
   sudo cp -a rootfs.debootstrap/* rootfs
 
+  sudo chown -R $USER:$USER *
+
+  sudo tar -zcvf rootfs.tar.gz rootfs
 }
 
 build_debootstrap || exit $?
 
-sudo chown -R $USER:$USER *
-
-sudo tar -zcvf rootfs.tar.gz rootfs
