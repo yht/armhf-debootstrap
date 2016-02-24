@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 SUITE=jessie
 MIRROR=http://ftp.us.debian.org/debian/
 
