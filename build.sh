@@ -23,6 +23,8 @@ function build_debootstrap {
 
   sudo rm -rf rootfs/dev/*
   sudo rm -rf rootfs/run/*
+  sudo rm -rf rootfs/sys/*
+
   sudo tar -zcf rootfs.tar.gz rootfs
 }
 
