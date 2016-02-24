@@ -17,7 +17,7 @@ function build_debootstrap {
   sudo mkdir rootfs
   sudo cp -a rootfs.debootstrap/* rootfs
 
-  tar -zcvf rootfs.tar.gz rootfs
+  sudo tar -zcvf rootfs.tar.gz rootfs
 }
 
 build_debootstrap || exit $?
