@@ -21,11 +21,11 @@ function build_debootstrap {
 
 #  sudo chown -R $USER:$USER *
 
-  sudo rm -rf rootfs/dev/*
-  sudo rm -rf rootfs/run/*
-  sudo rm -rf rootfs/sys/*
+#  sudo rm -rf rootfs/dev/*
+#  sudo rm -rf rootfs/run/*
+#  sudo rm -rf rootfs/sys/*
 
-  sudo tar -zcf rootfs.tar.gz rootfs
+  sudo tar -zvcf rootfs.tar.gz rootfs
 }
 
 build_debootstrap || exit $?
