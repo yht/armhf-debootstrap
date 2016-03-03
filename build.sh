@@ -19,7 +19,7 @@ function build_debootstrap {
   sudo mkdir rootfs
   sudo cp -a rootfs.debootstrap/* rootfs
 
-  sudo chown -R $USER:$USER *
+#  sudo chown -R $USER:$USER *
 
   sudo rm -rf rootfs/dev/*
   sudo rm -rf rootfs/run/*
