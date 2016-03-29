@@ -69,9 +69,14 @@ function post_strap {
   for a in $(mount |grep $PWD|awk '{print $3}'); do sudo umount $a; done
   sudo rm -rf rootfs.debootstrap
   sudo mkdir rootfs.debootstrap
-  sudo cp -a rootfs.debootstrap/* rootfs
-
-  sudo tar -zvcf rootfs.tar.gz rootfs
+  
+  if [[ $ARCH = armhf ]]; then
+    sudo cp -a rootfs.debootstrap/* rootfs
+    sudo tar -zvcf rootfs.tar.gz rootfs
+  else
+    sudo cp -a rootfs.debootstrap/* i386.rootfs
+    sudo tar -zvcf i386.rootfs.tar.gz i386.rootfs
+  fi
 }
 
 build_debootstrap || exit $?
