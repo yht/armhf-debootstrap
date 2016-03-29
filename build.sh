@@ -32,18 +32,17 @@ function build_debootstrap {
 }
 
 function cross_setup {
-  sudo cp /usr/bin/qemu-arm-static rootfs/usr/bin/
-  sudo cp /etc/resolv.conf rootfs/etc/
+  sudo cp /etc/resolv.conf rootfs.debootstrap/etc/
 
-  sudo touch rootfs/usr/sbin/policy-rc.d
-  sudo chmod a+w rootfs/usr/sbin/policy-rc.d
-  echo >rootfs/usr/sbin/policy-rc.d <<EOF
+  sudo touch rootfs.debootstrap/usr/sbin/policy-rc.d
+  sudo chmod a+w rootfs.debootstrap/usr/sbin/policy-rc.d
+  echo >rootfs.debootstrap/usr/sbin/policy-rc.d <<EOF
 echo "************************************" >&2
 echo "All rc.d operations denied by policy" >&2
 echo "************************************" >&2
 exit 101
 EOF
-  sudo chmod 0755 rootfs/usr/sbin/policy-rc.d
+  sudo chmod 0755 rootfs.debootstrap/usr/sbin/policy-rc.d
 
 
   # mount proc, sys and dev
@@ -53,6 +52,7 @@ EOF
   sudo chroot rootfs /bin/bash <<EOF
 set -x
 echo -e "\
+deb [arch=i386] http://ftp.us.debian.org/debian/jessie main
 \n\
 deb http://emdebian.org/tools/debian/ jessie main\
 " >> /etc/apt/sources.list
