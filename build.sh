@@ -6,6 +6,8 @@ SUITE=jessie
 MIRROR=http://ftp.us.debian.org/debian/
 ARCH=armhf
 
+sudo rm -rf rootfs*
+
 for var in "$@"; do
   case $var in
   	-i)
@@ -67,9 +69,8 @@ EOF
 
 function post_strap {
   for a in $(mount |grep $PWD|awk '{print $3}'); do sudo umount $a; done
-  sudo rm -rf rootfs.debootstrap
-  sudo mkdir rootfs.debootstrap
-  
+
+
   if [[ $ARCH = armhf ]]; then
     sudo cp -a rootfs.debootstrap/* rootfs
     sudo tar -zvcf rootfs.tar.gz rootfs
