@@ -6,9 +6,8 @@ SUITE=jessie
 MIRROR=http://ftp.us.debian.org/debian/
 ARCH=armhf
 
-function setup {
-for i in "$@"; do
-  case $i in
+for var in "$@"; do
+  case $var in
   	-i)
   	  echo "i386 selected"
   	  ARCH=i386
@@ -25,7 +24,6 @@ for i in "$@"; do
   	  ;;
   esac
 done
-}
 
 function build_debootstrap {
   echo "=> Bulding base Debian rootfs..."
@@ -64,7 +62,7 @@ deb http://emdebian.org/tools/debian/ jessie main\
   dpkg --add-architecture armhf
   apt-get update
   apt-get install crossbuild-essential-armhf
-
+EOF
 }
 
 function post_strap {
@@ -76,7 +74,6 @@ function post_strap {
   sudo tar -zvcf rootfs.tar.gz rootfs
 }
 
-setup || exit $?
 build_debootstrap || exit $?
 
 if [[ $ARCH = i386 ]]; then
