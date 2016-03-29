@@ -6,6 +6,7 @@ SUITE=jessie
 MIRROR=http://ftp.us.debian.org/debian/
 ARCH=armhf
 
+for a in $(mount |grep $PWD|awk '{print $3}'); do sudo umount $a; done
 sudo rm -rf rootfs*
 
 for var in "$@"; do
