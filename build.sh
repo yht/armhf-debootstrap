@@ -60,6 +60,8 @@ deb [arch=i386] http://ftp.us.debian.org/debian/jessie main\
 deb http://emdebian.org/tools/debian/ jessie main\
 " >> /etc/apt/sources.list
 
+  cat /etc/apt/sources.list
+
   wget -qO - http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | apt-key add -
   
   dpkg --add-architecture armhf
