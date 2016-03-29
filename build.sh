@@ -49,7 +49,7 @@ EOF
   sudo mount -t proc     chproc  rootfs.debootstrap/proc
   sudo mount -t sysfs    chsys   rootfs.debootstrap/sys
 
-  sudo chroot rootfs.bootstrap /bin/bash <<EOF
+  sudo chroot rootfs.debootstrap /bin/bash <<EOF
 set -x
 echo -e "\
 deb [arch=i386] http://ftp.us.debian.org/debian/jessie main
