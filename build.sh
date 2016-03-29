@@ -55,7 +55,7 @@ EOF
   sudo chroot rootfs.debootstrap /bin/bash <<EOF
 set -x
 echo -e "\
-deb [arch=i386] http://ftp.us.debian.org/debian/jessie main\
+deb [arch=i386] http://ftp.us.debian.org/debian/ jessie main\
 \n\
 deb http://emdebian.org/tools/debian/ jessie main\
 " > /etc/apt/sources.list
