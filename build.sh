@@ -46,10 +46,10 @@ EOF
 
 
   # mount proc, sys and dev
-  sudo mount -t proc     chproc  rootfs/proc
-  sudo mount -t sysfs    chsys   rootfs/sys
+  sudo mount -t proc     chproc  rootfs.debootstrap/proc
+  sudo mount -t sysfs    chsys   rootfs.debootstrap/sys
 
-  sudo chroot rootfs /bin/bash <<EOF
+  sudo chroot rootfs.bootstrap /bin/bash <<EOF
 set -x
 echo -e "\
 deb [arch=i386] http://ftp.us.debian.org/debian/jessie main
@@ -67,8 +67,8 @@ EOF
 
 function post_strap {
   for a in $(mount |grep $PWD|awk '{print $3}'); do sudo umount $a; done
-  sudo rm -rf rootfs
-  sudo mkdir rootfs
+  sudo rm -rf rootfs.debootstrap
+  sudo mkdir rootfs.debootstrap
   sudo cp -a rootfs.debootstrap/* rootfs
 
   sudo tar -zvcf rootfs.tar.gz rootfs
