@@ -58,7 +58,7 @@ echo -e "\
 deb [arch=i386] http://ftp.us.debian.org/debian/jessie main\
 \n\
 deb http://emdebian.org/tools/debian/ jessie main\
-" >> /etc/apt/sources.list
+" > /etc/apt/sources.list
 
   cat /etc/apt/sources.list
 
