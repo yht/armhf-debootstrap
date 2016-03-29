@@ -8,6 +8,7 @@ ARCH=armhf
 
 for a in $(mount |grep $PWD|awk '{print $3}'); do sudo umount $a; done
 sudo rm -rf rootfs*
+sudo rm -rf *rootfs
 
 for var in "$@"; do
   case $var in
@@ -75,9 +76,11 @@ function post_strap {
 
 
   if [[ $ARCH = armhf ]]; then
+    mkdir rootfs
     sudo cp -a rootfs.debootstrap/* rootfs
     sudo tar -zvcf rootfs.tar.gz rootfs
   else
+    mkdir i386.rootfs
     sudo cp -a rootfs.debootstrap/* i386.rootfs
     sudo tar -zvcf i386.rootfs.tar.gz i386.rootfs
   fi
@@ -89,4 +92,4 @@ if [[ $ARCH = i386 ]]; then
   cross_setup || exit $?
 fi
 
-post_strap || exit $?
+post_strap
