@@ -66,7 +66,7 @@ deb http://emdebian.org/tools/debian/ jessie main\
   
   dpkg --add-architecture armhf
   apt-get update
-  apt-get install crossbuild-essential-armhf
+  apt-get install -y crossbuild-essential-armhf
 EOF
 }
 
