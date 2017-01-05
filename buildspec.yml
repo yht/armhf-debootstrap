@@ -5,9 +5,9 @@ phases:
     commands:
       - mkdir armhf-debootstrap
       - echo ${CODEBUILD_BUILD_ID} | sed 's/.*://g' > latest
+      - ./setup.sh
   build:
     commands:
-      - ./setup.sh
       - ./build.sh -i
       - update-binfmts --display qemu-arm
       - ./build.sh -a

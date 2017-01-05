@@ -1,0 +1,11 @@
+language: c
+
+matrix:
+  include:
+  - os: linux
+    dist: trusty
+    sudo: required
+
+script:
+- "./setup.sh"
+- "./build.sh -a"
