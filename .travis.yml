@@ -7,12 +7,11 @@ matrix:
     sudo: required
 
 script:
-  - sudo apt-get install tree
   - "./setup.sh"
   - "./build.sh -a"
-  - mkdir ${TRAVIS_BUILD_NUMBER}
-  - cp *.tar.gz ${TRAVIS_BUILD_NUMBER}
-  - tree .
+  - "./build.sh -i"
+  - mkdir upload/${TRAVIS_BUILD_NUMBER}
+  - cp *.tar.gz upload/${TRAVIS_BUILD_NUMBER}
 
 deploy:
   on:
@@ -24,5 +23,5 @@ deploy:
   skip_cleanup: true
   acl: public_read
   region: us-west-2
-  local-dir: ${TRAVIS_BUILD_NUMBER}
+  local-dir: upload
   upload-dir: artifacts-travis/armhf-debootstrap
