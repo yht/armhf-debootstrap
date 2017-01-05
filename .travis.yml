@@ -9,11 +9,11 @@ matrix:
 script:
   - "./setup.sh"
   - "./build.sh -a"
+  - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
   - ls
-  - cp rootfs.tar.gz upload/${TRAVIS_BUILD_NUMBER}
+  - cp rootfs.tar.gz upload/${TRAVIS_BUILD_NUMBER}/
   - "./build.sh -i"
   - ls
-  - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
   - cp i386.rootfs.tar.gz upload/${TRAVIS_BUILD_NUMBER}
 
 deploy:
