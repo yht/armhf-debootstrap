@@ -7,14 +7,16 @@ matrix:
     sudo: required
 
 script:
-- sudo apt-get install tree
-- "./setup.sh"
-- "./build.sh -a"
-- mkdir ${TRAVIS_BUILD_NUMBER}
-- cp *.tar.gz ${TRAVIS_BUILD_NUMBER}
-- tree .
+  - sudo apt-get install tree
+  - "./setup.sh"
+  - "./build.sh -a"
+  - mkdir ${TRAVIS_BUILD_NUMBER}
+  - cp *.tar.gz ${TRAVIS_BUILD_NUMBER}
+  - tree .
 
 deploy:
+  on:
+    branch: chip/stable
   provider: s3
   access_key_id: "${AWS_ID}"
   secret_access_key: "${AWS_SECRET}"
