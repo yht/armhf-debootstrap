@@ -19,6 +19,6 @@ deploy:
   bucket: "opensource.nextthing.co"
   skip_cleanup: true
   acl: public_read
-  region: us-west-1
+  region: us-west-2
   local-dir: ${TRAVIS_BUILD_NUMBER}
   upload-dir: artifacts-travis/armhf-debootstrap
