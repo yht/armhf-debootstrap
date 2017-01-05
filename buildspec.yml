@@ -8,8 +8,9 @@ phases:
   build:
     commands:
       - ./setup.sh
-      - ./build.sh -a
       - ./build.sh -i
+      - update-binfmts --display qemu-arm
+      - ./build.sh -a
       - tar -zcf $(cat latest).tar.gz rootfs.tar.gz i386.tar.gz
   post_build:
     commands:
