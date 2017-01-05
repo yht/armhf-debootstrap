@@ -9,6 +9,7 @@ matrix:
 script:
   - "./setup.sh"
   - "./build.sh -a"
+  - cp *.tar.gz upload/${TRAVIS_BUILD_NUMBER}
   - "./build.sh -i"
   - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
   - cp *.tar.gz upload/${TRAVIS_BUILD_NUMBER}
