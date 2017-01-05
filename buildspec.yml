@@ -1,0 +1,21 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - mkdir armhf-debootstrap
+      - echo ${CODEBUILD_BUILD_ID} | sed 's/.*://g' > latest
+  build:
+    commands:
+      - ./setup.sh
+      - ./build.sh -a
+      - ./build.sh -i
+      - tar -zcf $(cat latest).tar.gz rootfs.tar.gz i386.tar.gz
+  post_build:
+    commands:
+      - cp latest armhf-debootstrap
+      - mv $(cat latest).tar.gz armhf-debootstrap
+
+artifacts:
+  files:
+    - armhf-debootstrap/**/*
