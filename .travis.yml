@@ -10,7 +10,7 @@ script:
   - "./setup.sh"
   - "./build.sh -a"
   - "./build.sh -i"
-  - mkdir upload/${TRAVIS_BUILD_NUMBER}
+  - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
   - cp *.tar.gz upload/${TRAVIS_BUILD_NUMBER}
 
 deploy:
