@@ -7,10 +7,12 @@ matrix:
     sudo: required
 
 script:
+- sudo apt-get install tree
 - "./setup.sh"
 - "./build.sh -a"
 - mkdir ${TRAVIS_BUILD_NUMBER}
 - cp *.tar.gz ${TRAVIS_BUILD_NUMBER}
+- tree .
 
 deploy:
   provider: s3

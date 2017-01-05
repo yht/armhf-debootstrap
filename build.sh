@@ -78,11 +78,11 @@ function post_strap {
   if [[ $ARCH = armhf ]]; then
     mkdir rootfs
     sudo cp -a rootfs.debootstrap/* rootfs
-    sudo tar -zvcf rootfs.tar.gz rootfs
+    sudo tar -zcf rootfs.tar.gz rootfs
   else
     mkdir i386.rootfs
     sudo cp -a rootfs.debootstrap/* i386.rootfs
-    sudo tar -zvcf i386.rootfs.tar.gz i386.rootfs
+    sudo tar -zcf i386.rootfs.tar.gz i386.rootfs
   fi
 }
 
