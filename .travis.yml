@@ -9,3 +9,16 @@ matrix:
 script:
 - "./setup.sh"
 - "./build.sh -a"
+- mkdir ${TRAVIS_BUILD_NUMBER}
+- cp *.tar.gz ${TRAVIS_BUILD_NUMBER}
+
+deploy:
+  provider: s3
+  access_key_id: "${AWS_ID}"
+  secret_access_key: "${AWS_SECRET}"
+  bucket: "opensource.nextthing.co"
+  skip_cleanup: true
+  acl: public_read
+  region: us-west-1
+  local-dir: ${TRAVIS_BUILD_NUMBER}
+  upload-dir: artifacts-travis/armhf-debootstrap
