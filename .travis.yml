@@ -7,13 +7,12 @@ matrix:
     sudo: required
 
 script:
+  - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
+  - echo ${TRAVIS_BUILD_NUMBER} > upload/latest
   - "./setup.sh"
   - "./build.sh -a"
-  - mkdir -p upload/${TRAVIS_BUILD_NUMBER}
-  - ls
   - cp rootfs.tar.gz upload/${TRAVIS_BUILD_NUMBER}/
   - "./build.sh -i"
-  - ls
   - cp i386.rootfs.tar.gz upload/${TRAVIS_BUILD_NUMBER}
 
 deploy:
