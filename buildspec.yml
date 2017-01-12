@@ -6,6 +6,7 @@ phases:
       - mkdir armhf-debootstrap
       - echo ${CODEBUILD_BUILD_ID} | sed 's/.*://g' > latest
       - ./setup.sh
+      - sudo apt-get install -y binfmt-support
   build:
     commands:
       - ./build.sh -i
